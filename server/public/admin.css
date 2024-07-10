@@ -1,0 +1,91 @@
+body{
+    display: flex;
+}
+.uploads{
+    width: 40vw;
+}
+.display{
+    width: 60vw;
+    min-height: 10vw;
+    height: auto;
+}
+.events{
+    width: 40vw;
+    height: 25vw;
+    margin-bottom: 2vw;
+    border: none;
+    box-shadow: 0 0 20px black;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.events h2{
+    margin: 0;
+}
+.events form{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+.events form input{
+    
+        font-size: 1.5vw;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        box-shadow: 0 0 4px black;
+        box-sizing: border-box;
+        padding: 5px;
+    
+}
+.events form textarea{
+    min-height: 15vw;
+    font-size: 1.5vw;
+    border-radius: 5px;
+    box-shadow: 0 0 4px black;
+    border: none;
+    outline: none;
+    max-height: 15vw;
+    box-sizing: border-box;
+    padding: 5px;
+}
+.fileload{
+    font-size: 1.2vw;
+    box-shadow: 0 0 4px black;
+    background-color: orange;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+button{
+    border: none;
+    outline: none;
+    box-shadow: 0 0 4px black;
+    border-radius: 5px;
+    font-size: 1.2vw;
+    background-color: #fff;
+}
+#events{
+    height: 35vw;
+    border-color: rgb(0, 221, 255);
+}
+
+#pdf{
+    height: 15vw;
+    border-color: rgb(217, 0, 255);
+}
+#upevents{
+    height: 35vw;
+    border-color: rgb(255, 247, 0);
+}
+
+.eventsdisp{
+    width: 90%;
+    margin: auto;
+    height: 35vw;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 1.2vw;
+    box-shadow: 0 0 5px black;
+}
