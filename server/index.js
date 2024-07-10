@@ -73,7 +73,7 @@ app.get('/', function(req, res) {
 });
 
 
-app.post('/uploadImg' ,(req,res)=>{
+app.post('/uploadimg' ,(req,res)=>{
   upload(req,res,(err)=>{
     if(err){
       console.log(err)
@@ -97,7 +97,7 @@ app.post('/uploadImg' ,(req,res)=>{
   res.sendFile(path.join(__dirname,'./index.html'))
 })
 
-app.post('/uploadPdf' ,(req,res)=>{
+app.post('/uploadpdf' ,(req,res)=>{
   upload1(req,res,(err)=>{
     if(err){
       console.log(err)
