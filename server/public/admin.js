@@ -97,25 +97,25 @@ const deleteeve = async(e)=>{
 
 const detail=   {name: e.target.closest('.alleventdisp').querySelector(".eventname").innerText}
   e.target.closest('.alleventdisp').style.backgroundColor = "red"
-   await fetch ('http://localhost:5001/deleteevent',{method:'post',headers:{"Content-Type": "application/json" },body:JSON.stringify(detail)})
+   await fetch ('https://nssproject.onrender.com/deleteevent',{method:'post',headers:{"Content-Type": "application/json" },body:JSON.stringify(detail)})
 }
 const deletepdf = async(e)=>{
   e.target.closest('.alleventdisp').style.backgroundColor = "red"
   const detail=   {name: e.target.closest('.alleventdisp').querySelector(".eventname").innerText}
   
-     await fetch ('http://localhost:5001/deletepdf',{method:'post',headers:{"Content-Type": "application/json" },body:JSON.stringify(detail)})
+     await fetch ('https://nssproject.onrender.com/deletepdf',{method:'post',headers:{"Content-Type": "application/json" },body:JSON.stringify(detail)})
   }
 
   const deleteupeve = async(e)=>{
     e.target.closest('.alleventdisp').style.backgroundColor = "red"
     const detail=   {Title: e.target.closest('.alleventdisp').querySelector(".eventname").innerText}
     
-       await fetch ('http://localhost:5001/deleteupevent',{method:'post',headers:{"Content-Type": "application/json" },body:JSON.stringify(detail)})
+       await fetch ('https://nssproject.onrender.com/deleteupevent',{method:'post',headers:{"Content-Type": "application/json" },body:JSON.stringify(detail)})
     }
 
     const deleteexp = async(e)=>{
       e.target.closest('.alleventdisp').style.backgroundColor = "red"
       const detail=   {Name: e.target.closest('.alleventdisp').querySelector(".stuname").innerText}
       
-         await fetch ('http://localhost:5001/deleteexp',{method:'post',headers:{"Content-Type": "application/json" },body:JSON.stringify(detail)})
+         await fetch ('https://nssproject.onrender.com/deleteexp',{method:'post',headers:{"Content-Type": "application/json" },body:JSON.stringify(detail)})
       }
