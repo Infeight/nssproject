@@ -14,7 +14,7 @@
     <h1 style="margin:1vw auto; text-align: center;">NSS ADMIN PAGE</h1>
 <div class="events" id="events">
 <h2>Events</h2>
-    <form action="/uploadImg" method="post"  enctype="multipart/form-data" >
+    <form action="/uploadimg" method="post"  enctype="multipart/form-data" >
         <input type="text" name="name" placeholder="Enter event name">
         <textarea type="text"  name="event" placeholder="Enter event description"></textarea>
         <input type="file" class="fileload" name="testImage" placeholder="Choose an image to display for the event">
@@ -26,7 +26,7 @@
      <div class="events" id="pdf">
         <h2>Event pdf</h2>
    
-    <form action="/uploadPdf" method="post" enctype="multipart/form-data">
+    <form action="/uploadpdf" method="post" enctype="multipart/form-data">
         <input type="text" name="name" placeholder="Enter event name">
         <input type="file" class="fileload" name="testpdf" placeholder="Choose an image to display for the event">
         <button type="submit">Upload</button>
@@ -49,9 +49,25 @@
 
 </div>
 
-<!-- <div class="display">
-    <div class="eventsdisp"></div>
-</div> -->
+<div class="display">
+    <h1 style="margin:1vw auto; text-align: center;">All Data</h1>
+   
+    <div class="eventsdisp" id="eventsdisp">
+        <h2>Events</h2>
+    </div>
+    
+    <div class="eventsdisp" id="pdfdisp">
+        <h2>Event pdfs</h2>
+    </div>
+  
+    <div class="eventsdisp" id="upeve">
+        <h2>Upcoming Events</h2>
+    </div>
+ 
+    <div class="eventsdisp" id="experience">
+        <h2>Experiences shared</h2>
+    </div>
+</div>
 
 </body>
 <script src="admin.js"></script>

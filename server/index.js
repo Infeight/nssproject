@@ -53,7 +53,7 @@ const upload = multer({
 
 const upload1 = multer({
   Storage
-}).array('testpdf', 5)
+}).single('testpdf')
 
 
 const upeventupload =  multer({
@@ -61,10 +61,10 @@ const upeventupload =  multer({
 }).single("testImage1")
 
 app.get('/', function(req, res) {
-  const allevents = image.image.find()
-  const allpdfs = pdf.pdf.find()
-  const allupevents = upevents.upevents.find()
-  const allexp = experience.experience.find() 
+  // const allevents = image.image.find()
+  // const allpdfs = pdf.pdf.find()
+  // const allupevents = upevents.upevents.find()
+  // const allexp = experience.experience.find() 
 
   res.sendFile(path.join(__dirname,'./index.html'))
 
@@ -73,7 +73,7 @@ app.get('/', function(req, res) {
 });
 
 
-app.post('/uploadImg' ,(req,res)=>{
+app.post('/uploadimg' ,(req,res)=>{
   upload(req,res,(err)=>{
     if(err){
       console.log(err)
@@ -94,10 +94,10 @@ app.post('/uploadImg' ,(req,res)=>{
   })
   // console.log(req.body)
   // console.log(req.file)
-  res.sendFile(path.join(__dirname,'./index.html'))
+  res.redirect('/')
 })
 
-app.post('/uploadPdf' ,(req,res)=>{
+app.post('/uploadpdf' ,(req,res)=>{
   upload1(req,res,(err)=>{
     if(err){
       console.log(err)
@@ -117,7 +117,7 @@ app.post('/uploadPdf' ,(req,res)=>{
   })
   // console.log(req.body)
   // console.log(req.file)
-  res.sendFile(path.join(__dirname,'./index.html'))
+  res.redirect('/')
 })
 
 app.post('/upevents' ,(req,res)=>{
@@ -142,7 +142,7 @@ app.post('/upevents' ,(req,res)=>{
   })
   // console.log(req.body)
   // console.log(req.file)
-  res.sendFile(path.join(__dirname,'./index.html'))
+  res.redirect('/')
 })
 
 
@@ -181,6 +181,54 @@ app.post("/experience", async(req,res)=>{
   await experience.experience.insertMany(exp)
 })
 
-app.post('/eventmatter',(req,res)=>{
+app.post('/deleteevent',async(req,res)=>{
+ const event = {name:req.body.name}
+  const allevents = await image.image.findOne(event);
+  if(allevents){
+   await image.image.deleteOne(allevents)
+   
+   console.log("deleted")
+  }
 
+
+  res.redirect('/')
 })
+
+app.post('/deletepdf',async(req,res)=>{
+  const event = {name:req.body.name}
+   const allevents = await pdf.pdf.findOne(event);
+   if(allevents){
+    await pdf.pdf.deleteOne(allevents)
+    
+    console.log("deleted")
+   }
+ 
+ 
+   res.redirect('/')
+ })
+
+ app.post('/deleteupevent',async(req,res)=>{
+  const event = {Title:req.body.Title}
+   const allevents = await upevents.upevents.findOne(event);
+   if(allevents){
+    await upevents.upevents.deleteOne(allevents)
+    
+    console.log("deleted")
+   }
+ 
+ 
+   res.redirect('/')
+ })
+
+ app.post('/deleteexp',async(req,res)=>{
+  const event = {Name:req.body.Name}
+   const allevents = await experience.experience.findOne(event);
+   if(allevents){
+    await experience.experience.deleteOne(allevents)
+    
+    console.log("deleted")
+   }
+ 
+ 
+   res.redirect('/')
+ })

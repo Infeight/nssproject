@@ -79,6 +79,7 @@ document.getElementById("share").addEventListener("click", async()=>{
     }
 
  await fetch ("http://localhost:5001/experience",{method:"post", headers: { "Content-Type": "application/json" }, body: JSON.stringify(exp)})
+ .then().then( window.location.reload())
  
 
     await upeve();
