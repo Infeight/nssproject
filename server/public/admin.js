@@ -1,10 +1,10 @@
 // document.body.style.backgroundColor = "red"
 
 const events = async()=>{
-    const data = await fetch('http://localhost:5001/events');
-  const pdfdata = await fetch('http://localhost:5001/eventpdf');
-  const upevents = await fetch('http://localhost:5001/upevents');
-  const experience = await fetch ('http://localhost:5001/experience')
+    const data = await fetch('https://nssproject.onrender.com/events');
+  const pdfdata = await fetch('https://nssproject.onrender.com/eventpdf');
+  const upevents = await fetch('https://nssproject.onrender.com/upevents');
+  const experience = await fetch ('https://nssproject.onrender.com/experience')
   
   const allevents = await data.json()
   const allpdfs = await pdfdata.json()
