@@ -232,3 +232,5 @@ app.post('/deletepdf',async(req,res)=>{
  
    res.redirect('/')
  })
+
+module.exports = app
