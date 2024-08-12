@@ -5,11 +5,13 @@ const events = async()=>{
   const pdfdata = await fetch('https://nssproject.onrender.com/eventpdf');
   const upevents = await fetch('https://nssproject.onrender.com/upevents');
   const experience = await fetch ('https://nssproject.onrender.com/experience')
+     const sneakpeaks = await fetch ('https://nssproject.onrender.com/sneakpeaks')
   
   const allevents = await data.json()
   const allpdfs = await pdfdata.json()
   const allupevents = await upevents.json()
   const allexperience = await experience.json()
+     const allsneakpeaks = await sneakpeaks.json()
 
   console.log(allevents)
 
@@ -90,6 +92,24 @@ const events = async()=>{
     document.getElementById("experience").append(alleventdisp)
     
   });
+
+    allsneakpeaks.forEach(element => {
+    const alleventdisp = document.createElement("div")
+    const eventname = document.createElement("li")
+    const delbtn = document.createElement("button")
+
+    eventname.innerHTML = element.name
+    delbtn.innerText = "Delete"
+    delbtn.addEventListener("click",deletesneak)
+
+   alleventdisp.className = "alleventdisp"
+   eventname.className = "eventname"
+    alleventdisp.appendChild(eventname)
+    alleventdisp.appendChild(delbtn)
+
+    document.getElementById("sneaks").append(alleventdisp)
+    
+  });
 }
 events()
 
@@ -112,6 +132,13 @@ const deletepdf = async(e)=>{
     
        await fetch ('https://nssproject.onrender.com/deleteupevent',{method:'post',headers:{"Content-Type": "application/json" },body:JSON.stringify(detail)})
     }
+
+  const deletesneak = async(e)=>{
+      e.target.closest('.alleventdisp').style.backgroundColor = "red"
+      const detail=   {name: e.target.closest('.alleventdisp').querySelector(".eventname").innerText}
+      
+         await fetch ('https://nssproject.onrender.com/deletesneak',{method:'post',headers:{"Content-Type": "application/json" },body:JSON.stringify(detail)})
+      }
 
     const deleteexp = async(e)=>{
       e.target.closest('.alleventdisp').style.backgroundColor = "red"
