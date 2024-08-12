@@ -96,6 +96,19 @@ const eventSchema = new mongoose.Schema({
 
    const pdf = mongoose.model("imagepdf",pdfSchema)
 
+ const sneakSchema = new mongoose.Schema({
+    name:{
+      type:String,
+      required:true
+    },
+    image:{
+      data:Buffer,
+      contentType:String
+    }
+  
+   })
+   const sneakpeak = mongoose.model("sneakpeak",sneakSchema)
+
   
   module.exports =  {events, upevents,experience,image,pdf,sneakpeak};
 
