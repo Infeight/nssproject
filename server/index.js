@@ -14,7 +14,7 @@ const app = express()
 
 
 
-const __dirname = path.resolve()
+// const __dirname = path.resolve()
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://nssiiitdmkurnool.netlify.app');
