@@ -178,6 +178,11 @@ app.get('/upevents', async(req,res)=>{
   res.send(upevent)
 })
 
+app.get('/sneakpeaks', async(req,res)=>{
+  const sneakpeak = await events.sneakpeak.find()
+  res.send(sneakpeak)
+})
+
 app.get('/experience', async(req,res)=>{
   const exp = await experience.experience.find();
   res.send(exp)
@@ -224,6 +229,19 @@ app.post('/deletepdf',async(req,res)=>{
    const allevents = await upevents.upevents.findOne(event);
    if(allevents){
     await upevents.upevents.deleteOne(allevents)
+    
+    console.log("deleted")
+   }
+ 
+ 
+   res.redirect('/')
+ })
+
+ app.post('/deletesneak',async(req,res)=>{
+  const event = {name:req.body.name}
+   const allevents = await sneakpeak.sneakpeak.findOne(event);
+   if(allevents){
+    await sneakpeak.sneakpeak.deleteOne(allevents)
     
     console.log("deleted")
    }
