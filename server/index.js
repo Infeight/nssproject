@@ -1,3 +1,4 @@
+
 const express = require ('express');
 const cors = require('cors')
 const bodyParser = require ('body-parser')
@@ -9,13 +10,13 @@ const pdf = require ('./mongoose.js')
 const sneakpeak = require ('./mongoose.js')
 const multer = require('multer')
 const path = require ('path');
-// import { name } from 'ejs';
+
+
+
+
 const app = express()
 
-
-
-// const __dirname = path.resolve()
-
+// app.use(cors({origin:'https://nssiiitdmkurnool.netlify.app/'}))
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://nssiiitdmkurnool.netlify.app');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -29,6 +30,7 @@ app.options('*', (req, res) => {
 
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
+
 app.use(express.static(path.join(__dirname, 'public')))
 
 
@@ -37,10 +39,7 @@ app.listen(port, ()=>{
     console.log(`listening on ${port}`)
 })
 
-// app.set("view engine", "ejs");
-// app.set("views",path.resolve("./views"))
 
-//multer storage
 const Storage = multer.diskStorage({
   destination:function(req,file,cb){
    return cb(null,'./uploads')
@@ -72,26 +71,30 @@ const upeventupload =  multer({
   Storage
 }).single("testImage1")
 
-app.get('/', function(req, res) {
-  // const allevents = image.image.find()
-  // const allpdfs = pdf.pdf.find()
-  // const allupevents = upevents.upevents.find()
-  // const allexp = experience.experience.find() 
+const sneakupload =  multer({
+  Storage
+}).single("testImage2")
 
-  res.sendFile(path.join(__dirname,'./index.html'))
+// app.get('/', function(req, res) {
 
-
-
-});
+//   res.sendFile(path.join(__dirname,'./index.html'))
 
 
-app.post('/uploadimg' ,(req,res)=>{
+
+// });
+app.get('/', (req, res) => {
+  res.sendFile('index.html', {root: path.join(__dirname, 'public')});
+  // res.send("Server Up and Running")
+})
+
+
+app.post('/uploadimg' ,async(req,res)=>{
   upload(req,res,(err)=>{
     if(err){
       console.log(err)
     }
     else{
-      const newImage = new image.image({
+      const newImage =  new  image.image({
         name: req.body.name,
         event:req.body.event,
         image:{
@@ -102,11 +105,10 @@ app.post('/uploadimg' ,(req,res)=>{
       newImage.save()
       .then(()=>{res.redirect('/')})
       .catch(err=>{console.log(err)})
+      
      }
   })
-  // console.log(req.body)
-  // console.log(req.file)
- // res.sendFile(path.join(__dirname,'./index.html'))
+
 })
 
 app.post('/uploadpdf' ,(req,res)=>{
@@ -127,12 +129,11 @@ app.post('/uploadpdf' ,(req,res)=>{
       .catch(err=>{console.log(err)})
      }
   })
-  // console.log(req.body)
-  // console.log(req.file)
-   // res.sendFile(path.join(__dirname,'./index.html'))
+
 })
 
 app.post('/upevents' ,(req,res)=>{
+  // console.log(req.body.Image)
   upeventupload(req,res,(err)=>{
     if(err){
       console.log(err)
@@ -152,11 +153,11 @@ app.post('/upevents' ,(req,res)=>{
       .catch(err=>{console.log(err)})
      }
   })
-  // console.log(req.body)
-  // console.log(req.file)
- // res.sendFile(path.join(__dirname,'./index.html'))
 
-  app.post('/sneakupload' ,async(req,res)=>{
+  
+})
+
+app.post('/sneakupload' ,async(req,res)=>{
   sneakupload(req,res,(err)=>{
     if(err){
       console.log(err)
@@ -175,6 +176,7 @@ app.post('/upevents' ,(req,res)=>{
       
      }
   })
+
 })
 
 
@@ -182,7 +184,9 @@ app.post('/upevents' ,(req,res)=>{
 
 
 
+
 app.get('/events', async(req,res)=>{
+  
   const event = await image.image.find();
   
   res.send(event)
@@ -202,6 +206,7 @@ app.get('/sneakpeaks', async(req,res)=>{
   const sneakpeak = await events.sneakpeak.find()
   res.send(sneakpeak)
 })
+
 
 app.get('/experience', async(req,res)=>{
   const exp = await experience.experience.find();
@@ -283,4 +288,4 @@ app.post('/deletepdf',async(req,res)=>{
    res.redirect('/')
  })
 
-module.exports = app
+ module.exports = app;
