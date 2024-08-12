@@ -23,11 +23,12 @@ body{
 .events{
     width: 40vw;
     height: 25vw;
-    margin-bottom: 2vw;
+    margin-bottom: 4vw;
     border: none;
-    box-shadow: 0 0 20px black;
+    box-shadow: 0 0 5px black;
     box-sizing: border-box;
     padding: 10px;
+    border-radius: 10px;
 }
 .events h2{
     margin: 0;
@@ -94,6 +95,10 @@ button{
     height: 35vw;
     border-color: rgb(255, 247, 0);
 }
+#sneakpeak{
+    width: 100%;
+    height: 20vw;
+}
 
 .eventsdisp{
     margin-bottom: 1vw;
@@ -131,6 +136,10 @@ button{
         #upevents{
             height: 40vw;
         }
+        #sneakpeak{
+            width: 100%;
+            height: 40vw;
+        }
     }
 }
 @media screen and (min-width:700px) {
@@ -143,6 +152,10 @@ button{
     }
     #upevents{
         height: 45vw;
+    }
+    #sneakpeak{
+        width: 100%;
+        height: 30vw;
     }
     button{
         font-size: 2vw;
@@ -169,6 +182,9 @@ button{
         margin: auto;
         font-size: 2.5vw;
     }
+    .events{
+        margin-bottom: 10vw;
+    }
     .display{
         width: 95%;
         margin: auto;
@@ -185,6 +201,10 @@ button{
     #upevents{
         width: 100%;
         height: 75vw;
+    }
+    #sneakpeak{
+        width: 100%;
+        height: 50vw;
     }
     button{
         font-size: 4.5vw;
