@@ -1,4 +1,4 @@
-import {connect, Schema, model} from "mongoose";
+const mongoose = require('mongoose')
 
 connect("mongodb+srv://siddamsettysumanth2003:0pxKNAxEfszvNweI@cluster0.ydcevt9.mongodb.net/Nss?retryWrites=true&w=majority&appName=Cluster0").then(()=>{
   console.log("connected to DB");
@@ -7,7 +7,7 @@ connect("mongodb+srv://siddamsettysumanth2003:0pxKNAxEfszvNweI@cluster0.ydcevt9.
 })
 
 
-const eventSchema = new Schema({
+const eventSchema = new mongoose.Schema({
    Event:{
      type:String,
      required:true
@@ -24,9 +24,9 @@ const eventSchema = new Schema({
     }
   })
 
-  const events = model("events",eventSchema);
+  const events = mongoose.model("events",eventSchema);
 
-  const upeventSchema = new Schema({
+  const upeventSchema = new mongoose.Schema({
     Event:{
       type:String,
       required:true
@@ -44,9 +44,9 @@ const eventSchema = new Schema({
      }
    })
 
-   const upevents = model("upevents", upeventSchema)
+   const upevents = mongoose.model("upevents", upeventSchema)
 
-   const expSchema = new Schema({
+   const expSchema = new mongoose.Schema({
     Name:{
       type:String,
       required:true
@@ -61,9 +61,9 @@ const eventSchema = new Schema({
      }
 
    })
-   const experience = model("experience",expSchema)
+   const experience = mongoose.model("experience",expSchema)
 
-   const imageSchema = new Schema({
+   const imageSchema = new mongoose.Schema({
     name:{
       type:String,
       required:true
@@ -79,9 +79,9 @@ const eventSchema = new Schema({
   
    })
 
-   const image = model("imagestore",imageSchema)
+   const image = mongoose.model("imagestore",imageSchema)
 
-   const pdfSchema = new Schema({
+   const pdfSchema = new mongoose.Schema({
     name:{
       type:String,
       required:true
@@ -94,7 +94,8 @@ const eventSchema = new Schema({
   
    })
 
-   const pdf = model("imagepdf",pdfSchema)
+   const pdf = mongoose.model("imagepdf",pdfSchema)
 
-  export default {events, upevents,experience,image,pdf};
+  
+  module.exports =  {events, upevents,experience,image,pdf,sneakpeak};
 
