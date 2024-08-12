@@ -21,7 +21,7 @@ app.use((req, res, next) => {
   res.header('Access-Control-Allow-Credentials', 'true');
   next();
 });
-app.options('*', (req, res) => {
+app.options('https://nssiiitdmkurnool.netlify.app', (req, res) => {
   res.sendStatus(200);
 });
 app.use(express.json())
