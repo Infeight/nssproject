@@ -1,15 +1,17 @@
-import express from 'express';
-import cors from 'cors'
-import bodyParser from 'body-parser';
-import events from './mongoose.js';
-import upevents from './mongoose.js'
-import experience from './mongoose.js'
-import image from './mongoose.js'
-import pdf from './mongoose.js'
-import multer from 'multer';
-import path from 'path'
-import { name } from 'ejs';
+const express = require ('express');
+const cors = require('cors')
+const bodyParser = require ('body-parser')
+const events = require('./mongoose.js')
+const upevents = require ('./mongoose.js')
+const experience = require ('./mongoose.js')
+const image = require('./mongoose.js')
+const pdf = require ('./mongoose.js')
+const sneakpeak = require ('./mongoose.js')
+const multer = require('multer')
+const path = require ('path');
+// import { name } from 'ejs';
 const app = express()
+
 
 
 const __dirname = path.resolve()
