@@ -100,13 +100,13 @@ app.post('/uploadimg' ,(req,res)=>{
         }
       })
       newImage.save()
-      .then(()=>{console.log('succesfully uploaded')})
+      .then(()=>{res.redirect('/')})
       .catch(err=>{console.log(err)})
      }
   })
   // console.log(req.body)
   // console.log(req.file)
- res.sendFile(path.join(__dirname,'./index.html'))
+ // res.sendFile(path.join(__dirname,'./index.html'))
 })
 
 app.post('/uploadpdf' ,(req,res)=>{
@@ -123,13 +123,13 @@ app.post('/uploadpdf' ,(req,res)=>{
         }
       })
       newPdf.save()
-      .then(()=>{console.log('succesfully uploaded')})
+      .then(()=>{res.redirect('/')})
       .catch(err=>{console.log(err)})
      }
   })
   // console.log(req.body)
   // console.log(req.file)
-   res.sendFile(path.join(__dirname,'./index.html'))
+   // res.sendFile(path.join(__dirname,'./index.html'))
 })
 
 app.post('/upevents' ,(req,res)=>{
@@ -148,13 +148,33 @@ app.post('/upevents' ,(req,res)=>{
         Date:req.body.date
       })
       newUpevent.save()
-      .then(()=>{console.log('succesfully uploaded upevents')})
+      .then(()=>{res.redirect('/')})
       .catch(err=>{console.log(err)})
      }
   })
   // console.log(req.body)
   // console.log(req.file)
- res.sendFile(path.join(__dirname,'./index.html'))
+ // res.sendFile(path.join(__dirname,'./index.html'))
+
+  app.post('/sneakupload' ,async(req,res)=>{
+  sneakupload(req,res,(err)=>{
+    if(err){
+      console.log(err)
+    }
+    else{
+      const newsneak=  new  sneakpeak.sneakpeak({
+        name: req.body.name,
+        image:{
+          data: req.file.buffer,
+          contentType:'image/png'
+        }
+      })
+      newsneak.save()
+      .then(()=>{res.redirect('/')})
+      .catch(err=>{console.log(err)})
+      
+     }
+  })
 })
 
 
